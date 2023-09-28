@@ -4,7 +4,7 @@ import org.w3c.dom.Node;
 
 public class TreeSearch {
 
-    Node root;
+    public Node root;
 
     static class Node {
         int key;
@@ -48,6 +48,43 @@ public class TreeSearch {
         if (root.key > key)
             return search_Recursive(root.left, key);
         return search_Recursive(root.right, key);
+    }
+    public Node getRoot(){
+        return  this.root;
+    }
+    public void printInorder(Node node)
+    {
+        if (node == null)
+            return;
+
+        printInorder(node.left);
+
+        System.out.print(node.key + " ");
+
+        printInorder(node.right);
+    }
+    public void printPreorder(Node node)
+    {
+        if (node == null)
+            return;
+
+        System.out.print(node.key + " ");
+
+        printPreorder(node.left);
+
+        // Now recur on right subtree
+        printPreorder(node.right);
+    }
+    public void printPostorder(Node node)
+    {
+        if (node == null)
+            return;
+
+        printPostorder(node.left);
+
+        printPostorder(node.right);
+
+        System.out.print(node.key + " ");
     }
 
 }
